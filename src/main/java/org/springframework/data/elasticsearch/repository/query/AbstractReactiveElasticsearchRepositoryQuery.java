@@ -109,7 +109,7 @@ abstract class AbstractReactiveElasticsearchRepositoryQuery implements Repositor
 				evaluationContextProvider);
 
 		String indexName = queryMethod.getEntityInformation().getIndexName();
-		IndexCoordinates index = IndexCoordinates.of(indexName);
+		IndexCoordinates index = parameterAccessor.getIndexCoordinatesOrDefaults(IndexCoordinates.of(indexName));
 
 		ReactiveElasticsearchQueryExecution execution = getExecution(parameterAccessor,
 				new ResultProcessingConverter(processor));
